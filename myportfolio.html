@@ -1,0 +1,868 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ch. Angel Joseph | Portfolio</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050508;
+            --card: rgba(17, 17, 25, 0.72);
+            --purple: #a855f7;
+            --pink: #ec4899;
+            --cyan: #22d3ee;
+            --text: #f5f5f5;
+            --muted: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Background glow */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.18;
+            z-index: -1;
+        }
+
+        body::before {
+            background: var(--purple);
+            top: 5%;
+            left: -150px;
+        }
+
+        body::after {
+            background: var(--cyan);
+            right: -150px;
+            bottom: 10%;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(5, 5, 8, 0.82);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+        }
+
+        .navbar-brand {
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .navbar-brand span {
+            color: var(--purple);
+        }
+
+        .nav-link {
+            color: #bbb !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--cyan) !important;
+            text-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+            position: relative;
+        }
+
+        .hero-small {
+            color: var(--cyan);
+            letter-spacing: 4px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(2.6rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin: 18px 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                var(--purple),
+                var(--pink),
+                var(--cyan)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-glow {
+            border: 1px solid var(--purple);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: rgba(168, 85, 247, 0.12);
+            transition: 0.3s;
+        }
+
+        .btn-glow:hover {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-glow {
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-outline-glow:hover {
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
+        }
+
+        /* Futuristic orb */
+        .orb-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .orb {
+            width: min(320px, 70vw);
+            height: min(320px, 70vw);
+            border-radius: 50%;
+            position: relative;
+            background:
+                radial-gradient(circle at 35% 30%, #d8b4fe, transparent 10%),
+                radial-gradient(circle, #7e22ce, #12051d 65%);
+            box-shadow:
+                0 0 40px rgba(168, 85, 247, 0.7),
+                0 0 100px rgba(168, 85, 247, 0.3);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .orb::before,
+        .orb::after {
+            content: "";
+            position: absolute;
+            inset: -20px;
+            border: 1px solid rgba(34, 211, 238, 0.5);
+            border-radius: 50%;
+            transform: rotate(25deg);
+        }
+
+        .orb::after {
+            transform: rotate(-35deg);
+            border-color: rgba(236, 72, 153, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: "Orbitron", sans-serif;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 50px;
+        }
+
+        /* Glass cards */
+        .glass-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            transition: 0.4s;
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.5);
+            box-shadow:
+                0 10px 40px rgba(168, 85, 247, 0.12),
+                0 0 20px rgba(34, 211, 238, 0.05);
+        }
+
+        .glass-card h3 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* Education */
+        .timeline {
+            border-left: 2px solid var(--purple);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background: var(--cyan);
+            border-radius: 50%;
+            left: -38px;
+            top: 5px;
+            box-shadow: 0 0 15px var(--cyan);
+        }
+
+        .timeline-item h3 {
+            color: white;
+        }
+
+        .timeline-item span {
+            color: var(--purple);
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skill-box {
+            text-align: center;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-bar {
+            height: 5px;
+            background: #22222c;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--purple), var(--cyan));
+            box-shadow: 0 0 12px var(--purple);
+        }
+
+        /* Projects */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-number {
+            font-family: "Orbitron", sans-serif;
+            color: rgba(168, 85, 247, 0.3);
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            color: var(--cyan);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 3px;
+        }
+
+        /* Social */
+        .social-link {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 18px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .social-link:hover {
+            color: white;
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 0 25px rgba(168,85,247,0.2);
+        }
+
+        .social-link small {
+            color: var(--muted);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Contact */
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            color: var(--muted);
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            .hero {
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .orb-container {
+                margin-top: 70px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline-item::before {
+                left: -32px;
+            }
+
+            .glass-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            <span>&lt;</span>Angel<span>/&gt;</span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#education">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 reveal">
+
+                <div class="hero-small">
+                    AI & Data Science Student
+                </div>
+
+                <h1>
+                    Hi, I'm<br>
+                    <span class="gradient-text">Ch. Angel Joseph</span>
+                </h1>
+
+                <p>
+                    A passionate Artificial Intelligence & Data Science student
+                    exploring technology, programming and the future of intelligent
+                    systems.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-glow">
+                        View My Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline-glow">
+                        Connect With Me
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 orb-container reveal">
+                <div class="orb"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+
+        <h2 class="section-title reveal">
+            About <span class="gradient-text">Me</span>
+        </h2>
+
+        <p class="section-subtitle reveal">
+            A little about my journey
+        </p>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9 reveal">
+                <div class="glass-card text-center">
+
+                    <h3>Who Am I?</h3>
+
+                    <p>
+                        I'm <strong>Ch. Angel Joseph</strong>, currently pursuing
+                        my undergraduate degree in Artificial Intelligence &
+                        Data Science at Sir C R Reddy College.
+                    </p>
+
+                    <p>
+                        I'm interested in learning programming, exploring
+                        artificial intelligence and building useful technology
+                        projects. I'm continuously developing my technical
+                        skills and looking forward to turning ideas into
+                        real-world solutions.
+                    </p>
+
+                    <div class="mt-4">
+                        <span class="tag">AI & Data Science</span>
+                        <span class="tag">Programming</span>
+                        <span class="tag">Technology</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EDUCATION -->
+<section id="education">
+    <div class="container">
+
+        <h2 class="section-title reveal">
+            My <span class="gradient-text">Education</span>
+        </h2>
+
+        <p class="section-subtitle reveal">
+            My academic journey
+        </p>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="timeline">
+
+                    <div class="timeline-item reveal">
+                        <span>UNDERGRADUATE</span>
+                        <h3>Sir C R Reddy College</h3>
+                        <p>
+                            B.Tech — Artificial Intelligence & Data Science
+                        </p>
+                        <strong>CGPA: 8.09</strong>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <span>INTERMEDIATE</span>
+                        <h3>Sarada Junior College</h3>
+                        <p>
+                            Intermediate Education
+                        </p>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <span>SCHOOL</span>
+                        <h3>Deninel Memorial EM School</h3>
+                        <p>
+                            School Education
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+
+        <h2 class="section-title reveal">
+            My <span class="gradient-text">Skills</span>
+        </h2>
+
+        <p class="section-subtitle reveal">
+            Technologies I'm learning and working with
+        </p>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-12 col-md-6 col-lg-5 reveal">
+                <div class="glass-card skill-box">
+
+                    <div class="skill-icon">☕</div>
+
+                    <h3>Java</h3>
+
+                    <p>
+                        Object-oriented programming and application development.
+                    </p>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5 reveal">
+                <div class="glass-card skill-box">
+
+                    <div class="skill-icon">🐍</div>
+
+                    <h3>Python</h3>
+
+                    <p>
+                        Programming fundamentals, logic building and
+                        data-oriented applications.
+                    </p>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+
+        <h2 class="section-title reveal">
+            Featured <span class="gradient-text">Projects</span>
+        </h2>
+
+        <p class="section-subtitle reveal">
+            Projects and ideas I'm exploring
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 reveal">
+                <div class="glass-card project-card">
+
+                    <div class="project-number">01</div>
+
+                    <h3>SmartSort</h3>
+
+                    <p>
+                        A smart waste-management concept designed to
+                        improve waste segregation using technology.
+                    </p>
+
+                    <span class="tag">AI</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Sustainability</span>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 reveal">
+                <div class="glass-card project-card">
+
+                    <div class="project-number">02</div>
+
+                    <h3>Future Project</h3>
+
+                    <p>
+                        More innovative projects will be added here as I
+                        continue learning and building.
+                    </p>
+
+                    <span class="tag">Coming Soon</span>
+                    <span class="tag">Innovation</span>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SOCIAL -->
+<section>
+    <div class="container">
+
+        <h2 class="section-title reveal">
+            Let's <span class="gradient-text">Connect</span>
+        </h2>
+
+        <p class="section-subtitle reveal">
+            Find me on social platforms
+        </p>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-12 col-md-5 reveal">
+                <a class="social-link"
+                   href="https://www.instagram.com/angelion"
+                   target="_blank">
+                    📸 Instagram
+                    <small>@angelion</small>
+                </a>
+            </div>
+
+            <div class="col-12 col-md-5 reveal">
+                <a class="social-link"
+                   href="https://www.linkedin.com/in/angel-joseph"
+                   target="_blank">
+                    💼 LinkedIn
+                    <small>Angel Joseph</small>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+
+        <div class="contact-box reveal">
+
+            <h2 class="section-title">
+                Have an <span class="gradient-text">Idea?</span>
+            </h2>
+
+            <p class="section-subtitle">
+                Let's connect, collaborate and build something meaningful.
+            </p>
+
+            <a href="https://www.linkedin.com/in/angel-joseph"
+               target="_blank"
+               class="btn btn-glow">
+                Connect on LinkedIn →
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p class="mb-1">
+            © <span id="year"></span> Ch. Angel Joseph
+        </p>
+
+        <small>
+            Built with HTML • CSS • JavaScript • Bootstrap
+        </small>
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+
+        const windowHeight = window.innerHeight;
+
+        revealElements.forEach(element => {
+
+            const elementTop = element.getBoundingClientRect().top;
+
+            if (elementTop < windowHeight - 80) {
+                element.classList.add("active");
+            }
+
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+
+    revealOnScroll();
+
+
+    // Close mobile navbar after clicking a link
+    document.querySelectorAll(".nav-link").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            const navbar = document.querySelector(".navbar-collapse");
+
+            if (navbar.classList.contains("show")) {
+
+                new bootstrap.Collapse(navbar).hide();
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
